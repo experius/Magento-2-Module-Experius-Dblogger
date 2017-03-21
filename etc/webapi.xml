@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route method="POST" url="/V1/experius-dblogger/log">
+		<service class="Experius\Dblogger\Api\LogRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Experius_Dblogger::Log_save"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/experius-dblogger/search">
+		<service class="Experius\Dblogger\Api\LogRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Experius_Dblogger::Log_view"/>
+		</resources>
+	</route>
+	<route method="GET" url="/V1/experius-dblogger/:logId">
+		<service class="Experius\Dblogger\Api\LogRepositoryInterface" method="getById"/>
+		<resources>
+			<resource ref="Experius_Dblogger::Log_view"/>
+		</resources>
+	</route>
+	<route method="PUT" url="/V1/experius-dblogger/:logId">
+		<service class="Experius\Dblogger\Api\LogRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Experius_Dblogger::Log_update"/>
+		</resources>
+	</route>
+	<route method="DELETE" url="/V1/experius-dblogger/:logId">
+		<service class="Experius\Dblogger\Api\LogRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Experius_Dblogger::Log_delete"/>
+		</resources>
+	</route>
+</routes>

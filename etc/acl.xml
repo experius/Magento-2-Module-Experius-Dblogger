@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Experius_Dblogger::Log" sortOrder="10" title="Log">
+					<resource id="Experius_Dblogger::Log_save" sortOrder="10" title="Save Log"/>
+					<resource id="Experius_Dblogger::Log_delete" sortOrder="20" title="Delete Log"/>
+					<resource id="Experius_Dblogger::Log_update" sortOrder="30" title="Update Log"/>
+					<resource id="Experius_Dblogger::Log_view" sortOrder="40" title="View Log"/>
+				</resource>
+				<resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+						<resource id="Magento_Config::config">
+							<resource id="Experius_Dblogger::config_experius_dblogger" title="tools"/>
+						</resource>
+					</resource>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
