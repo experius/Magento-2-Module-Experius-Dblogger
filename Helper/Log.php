@@ -9,11 +9,13 @@ class Log {
 	protected $dateTimeLib;
 	protected $logger;
 	protected $scopeConfig;
+	protected $timeZoneLib;
 
     public function __construct(\Experius\Dblogger\Model\LogFactory $logFactory, 
     							\Magento\Framework\Stdlib\DateTime\DateTime $dateTimeLib,
     							\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-								\Psr\Log\LoggerInterface $logger)
+								\Psr\Log\LoggerInterface $logger,
+								\Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib)
     {
         $this->logFactory = $logFactory;
 		$this->dateTimeLib = $dateTimeLib;
@@ -29,7 +31,7 @@ class Log {
 	        ->setAction($action)
 	        ->setMessage($message)
 	        ->setType(ucfirst(strtolower($type)))
-	        ->setCreatedAt($this->dateTimeLib->gmtDate())
+	        ->setCreatedAt($this->dateTimeLib->date())
 			->save();
 			return;
 		}

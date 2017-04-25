@@ -6,6 +6,9 @@
         {
             "email": "info@mage2gen.com",
             "name": "Mage2Gen"
+        },{
+        	"email": "rene@experius.nl",
+        	"name": "René Schep"
         }
     ],
     "minimum-stability": "dev",
