@@ -27,10 +27,11 @@ class Log
 	protected $logHelper;
 	protected $numberOfDays;
 
-    public function __construct (\Experius\Dblogger\Helper\Log $logHelper)
+    public function __construct (\Experius\Dblogger\Helper\Log $logHelper,
+                                 \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
     {
 		$this->logHelper = $logHelper;
-		$this->numberOfDays = $this->scopeConfig->getValue('dev/dblogger/is_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+		$this->numberOfDays = $scopeConfig->getValue('dev/dblogger/is_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -40,6 +41,6 @@ class Log
      */
     public function cleanLog()
     {
-        $this->logHelper->cleanLog($numberOfDays);
+        $this->logHelper->cleanLog($this->numberOfDays);
     }
 }
