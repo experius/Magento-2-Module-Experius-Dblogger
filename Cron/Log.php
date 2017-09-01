@@ -31,7 +31,7 @@ class Log
                                  \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
     {
 		$this->logHelper = $logHelper;
-		$this->numberOfDays = $scopeConfig->getValue('dev/dblogger/is_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+		$this->numberOfDays = $scopeConfig->getValue('dev/dblogger/days', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     /**

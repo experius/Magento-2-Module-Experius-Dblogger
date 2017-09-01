@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  *  A Magento 2 module named Experius/DBlogger
  *  Copyright (C) 2017 Experius
@@ -28,45 +28,24 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateLogsCommand extends Command
+class CleanLogsCommand extends Command
 {
-	protected $loghelper;
-	
- 	public function __construct( \Experius\Dblogger\Helper\Log $logHelper)
-	{
-		$this->logHelper = $logHelper;
-		parent::__construct();
-	}
- 
+    protected $cron;
+
+    public function __construct( \Experius\Dblogger\Cron\Log $cron)
+    {
+        $this->cron = $cron;
+        parent::__construct();
+    }
+
     protected function configure()
     {
-        $this->setName('experius:dblogger:create')->setDescription('Creates test logs.');
+        $this->setName('experius:dblogger:clean')->setDescription('Deletes logs old logs (default 30 days)');
     }
- 
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-    	$this->first();
-		$this->second();
-		$this->third();
-		$this->fourth();
-		$this->fifth();
-        $output->writeln('Created Logs');
+        $this->cron->cleanLog();
+        $output->writeln('Cleaned Logs');
     }
-	
-	protected function first(){
-		$this->logHelper->log('Experius_Dblogger', 'first', 'Test melding', 'success');
-	}
-	protected function second(){
-		$this->logHelper->log('Experius_Dblogger', 'second', 'Test melding', 'error');
-	}
-	protected function third(){
-		$this->logHelper->log('Experius_Dblogger', 'third', 'Test melding', 'notice');
-	}
-	protected function fourth(){
-		$this->logHelper->log('Experius_Dblogger', 'fourth', 'Test melding', 'warning');
-	}
-	protected function fifth(){
-		$this->logHelper->log('Experius_Dblogger', 'fifth', 'Test melding', 'exception');
-	}
- 
 }

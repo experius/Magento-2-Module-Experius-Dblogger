@@ -12,3 +12,20 @@ Log() function requires 4 parameters
 
 Support to take over PSR Logger.
 
+## Change log
+
+Version 1.0.3 - September 01, 2017 | Rene Schep
+
+- BUGFIX: Old logs are now actually removed by cron
+
+Version 1.0.2 - May 15, 2017 | Rene Schep
+
+- BUGFIX: Fix cleanlog task so it actually runs 
+
+Version 1.0.1 - April 25, 2017 | Rene Schep
+
+- Changed how date is displayed in log grid
+
+Version 1.0.0 - March 21, 2017 | Rene Schep
+
+- Initial Module

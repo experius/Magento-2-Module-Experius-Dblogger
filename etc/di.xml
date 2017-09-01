@@ -19,7 +19,8 @@
 	<type name="Magento\Framework\Console\CommandList">
 		<arguments>
 			<argument name="commands" xsi:type="array">
-				<item name="create_logs" xsi:type="object">Experius\Dblogger\Console\Command\CreateLogsCommand</item>
+				<item name="create" xsi:type="object">Experius\Dblogger\Console\Command\CreateLogsCommand</item>
+				<item name="clean" xsi:type="object">Experius\Dblogger\Console\Command\CleanLogsCommand</item>
 			</argument>
 		</arguments>
 	</type>
