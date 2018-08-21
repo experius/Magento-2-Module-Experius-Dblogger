@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Experius\Dblogger\Ui\Component\Listing\Columns\Column;
 
@@ -8,7 +8,6 @@ namespace Experius\Dblogger\Ui\Component\Listing\Columns\Column;
  */
 class Type extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
      * @param \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory
@@ -56,5 +55,4 @@ class Type extends \Magento\Ui\Component\Listing\Columns\Column
         return $dataSource;
     }
 
-} 
-	
+}
