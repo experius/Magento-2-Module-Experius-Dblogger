@@ -55,21 +55,6 @@ class View extends \Magento\Backend\App\Action
     }
 
     /**
-     * Init page
-     *
-     * @param \Magento\Backend\Model\View\Result\Page $resultPage
-     * @return \Magento\Backend\Model\View\Result\Page
-     */
-    public function initPage($resultPage)
-    {
-        $resultPage->setActiveMenu('Experius::experius_dblogger')
-            ->addBreadcrumb(__('Experius'), __('Experius'))
-            ->addBreadcrumb(__('Dblogger'), __('Dblogger'));
-        return $resultPage;
-    }
-
-
-    /**
      * Edit action
      *
      * @return \Magento\Framework\Controller\ResultInterface
@@ -95,10 +80,7 @@ class View extends \Magento\Backend\App\Action
         // 5. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $this->initPage($resultPage)->addBreadcrumb(
-            __('View Log Message'),
-            __('View Log Message')
-        );
+        $resultPage->setActiveMenu('Experius::experius_dblogger');
         $resultPage->getConfig()->getTitle()->prepend(__('View Log Message'));
         return $resultPage;
     }

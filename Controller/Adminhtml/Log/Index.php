@@ -48,19 +48,6 @@ class Index extends \Magento\Backend\App\Action
     }
 
     /**
-     * Init page
-     *
-     * @param \Magento\Backend\Model\View\Result\Page $resultPage
-     * @return \Magento\Backend\Model\View\Result\Page
-     */
-    public function initPage($resultPage)
-    {
-        $resultPage->setActiveMenu('Experius::experius_dblogger')
-            ->addBreadcrumb(__('Experius'), __('Experius'));
-        return $resultPage;
-    }
-
-    /**
      * Index action
      *
      * @return \Magento\Framework\Controller\ResultInterface
@@ -68,6 +55,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Experius::experius_dblogger');
         $resultPage->getConfig()->getTitle()->prepend(__("Log"));
         return $resultPage;
     }
