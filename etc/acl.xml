@@ -12,7 +12,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Experius_Dblogger::config_experius_dblogger" title="tools"/>
+                            <resource id="Experius_Dblogger::config_experius_dblogger" title="Database Logger"/>
                         </resource>
                     </resource>
                 </resource>

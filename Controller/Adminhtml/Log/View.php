@@ -22,41 +22,66 @@
 namespace Experius\Dblogger\Controller\Adminhtml\Log;
 
 /**
- * Class Index
+ * Class View
  * @package Experius\Dblogger\Controller\Adminhtml\Log
  */
-class Index extends \Magento\Backend\App\Action
+class View extends \Magento\Backend\App\Action
 {
+
     const ADMIN_RESOURCE = 'Experius_Dblogger::top_level';
+
+    /**
+     * @var \Magento\Framework\Registry
+     */
+    protected $_coreRegistry;
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * Constructor
-     *
      * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
+        \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;
+        $this->_coreRegistry = $coreRegistry;
         parent::__construct($context);
     }
 
     /**
-     * Index action
+     * Edit action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
+        // 1. Get ID and create model
+        $id = $this->getRequest()->getParam('log_id');
+        $model = $this->_objectManager->create('Experius\Dblogger\Model\Log');
+        
+        // 2. Initial checking
+        if ($id) {
+            $model->load($id);
+            if (!$model->getLogId()) {
+                $this->messageManager->addError(__('This Log Message no longer exists.'));
+                /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+                $resultRedirect = $this->resultRedirectFactory->create();
+                return $resultRedirect->setPath('*/*/');
+            }
+        }
+        $this->_coreRegistry->register('experius_dblogger_log', $model);
+        
+        // 5. Build edit form
+        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Experius::experius_dblogger');
-        $resultPage->getConfig()->getTitle()->prepend(__("Log"));
+        $resultPage->getConfig()->getTitle()->prepend(__('View Log Message'));
         return $resultPage;
     }
 }

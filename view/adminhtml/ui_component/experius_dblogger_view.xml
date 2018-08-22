@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">experius_dblogger_view.log_form_data_source</item>
+            <item name="deps" xsi:type="string">experius_dblogger_view.log_form_data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">experius_dblogger_view</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Experius\Dblogger\Block\Adminhtml\Log\View\BackButton</item>
+        </item>
+    </argument>
+    <dataSource name="log_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Experius\Dblogger\Model\Log\DataProvider</argument>
+            <argument name="name" xsi:type="string">log_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">log_id</argument>
+            <argument name="requestFieldName" xsi:type="string">log_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="General">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Log Message</item>
+            </item>
+        </argument>
+        <field name="module">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Module</item>
+                    <item name="component" xsi:type="string">Magento_Catalog/js/components/disable-on-option/input</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">module</item>
+                    <item name="validation" xsi:type="array">
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Type</item>
+                    <item name="component" xsi:type="string">Magento_Catalog/js/components/disable-on-option/input</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                    <item name="validation" xsi:type="array">
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="created_at">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Created At</item>
+                    <item name="component" xsi:type="string">Magento_Catalog/js/components/disable-on-option/input</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataScope" xsi:type="string">created_at</item>
+                    <item name="validation" xsi:type="array">
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="action">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Action</item>
+                    <item name="component" xsi:type="string">Experius_Dblogger/js/components/disable-on-option/textarea</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="dataScope" xsi:type="string">action</item>
+                    <item name="validation" xsi:type="array">
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="message">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Message</item>
+                    <item name="component" xsi:type="string">Experius_Dblogger/js/components/disable-on-option/textarea</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="dataScope" xsi:type="string">message</item>
+                    <item name="validation" xsi:type="array">
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
