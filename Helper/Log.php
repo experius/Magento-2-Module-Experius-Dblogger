@@ -25,35 +25,73 @@ namespace Experius\Dblogger\Helper;
 
 class Log
 {
-
+    /**
+     * @var \Experius\Dblogger\Model\LogFactory
+     */
     protected $logFactory;
+    /**
+     * @var bool
+     */
     protected $isEnabled;
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\DateTime
+     */
     protected $dateTimeLib;
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     protected $logger;
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
     protected $scopeConfig;
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface
+     */
     protected $timeZoneLib;
+    /**
+     * @var \Experius\Dblogger\Api\LogRepositoryInterface
+     */
     protected $logRepository;
+    /**
+     * @var \Magento\Framework\Api\SearchCriteriaBuilder
+     */
     protected $searchCriteriaBuilder;
 
-    public function __construct(\Experius\Dblogger\Model\LogFactory $logFactory,
-                                \Magento\Framework\Stdlib\DateTime\DateTime $dateTimeLib,
-                                \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-                                \Psr\Log\LoggerInterface $logger,
-                                \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib,
-                                \Experius\Dblogger\Api\LogRepositoryInterface $logRepository,
-                                \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder)
-    {
+    /**
+     * @param \Experius\Dblogger\Model\LogFactory $logFactory
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTimeLib
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib
+     * @param \Experius\Dblogger\Api\LogRepositoryInterface $logRepository
+     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
+     */
+    public function __construct(
+        \Experius\Dblogger\Model\LogFactory $logFactory,
+        \Magento\Framework\Stdlib\DateTime\DateTime $dateTimeLib,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib,
+        \Experius\Dblogger\Api\LogRepositoryInterface $logRepository,
+        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
+    ) {
         $this->logFactory = $logFactory;
         $this->dateTimeLib = $dateTimeLib;
         $this->scopeConfig = $scopeConfig;
         $this->logger = $logger;
-        $this->isEnabled = $this->scopeConfig->getValue('dev/dblogger/is_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-
+        $this->isEnabled = (boolean) $this->scopeConfig->getValue('dev/dblogger/is_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $this->logRepository = $logRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
-    public function log($module, $action, $message, $type)
+    /**
+     * @param string $module
+     * @param string $action
+     * @param string $message
+     * @param string $type
+     */
+    public function log(string $module, string $action, string $message, string $type)
     {
         if ($this->isEnabled) {
             $this->logFactory->create()
@@ -65,10 +103,12 @@ class Log
                 ->save();
             return;
         }
-
         $this->logger->debug(strtolower($module) . '-' . strtolower($type) . '[' . $action . ']: ' . $message);
     }
 
+    /**
+     * @param integer $numberOfDays
+     */
     public function cleanLog($numberOfDays)
     {
         $cleanDate = $this->dateTimeLib->date('Y-m-d H:i:s', strtotime('-' . $numberOfDays . ' day'));

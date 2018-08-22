@@ -112,7 +112,7 @@ class LogRepository implements LogRepositoryInterface
     {
         $log = $this->logFactory->create();
         $log->load($logId);
-        if (!$log->getId()) {
+        if (!$log->getLogId()) {
             throw new NoSuchEntityException(__('Log with id "%1" does not exist.', $logId));
         }
         return $log;

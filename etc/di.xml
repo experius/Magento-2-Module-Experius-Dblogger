@@ -1,27 +1,27 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<virtualType name="Experius\Dblogger\Model\ResourceModel\Log\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-		<arguments>
-			<argument name="mainTable" xsi:type="string">experius_dblogger</argument>
-			<argument name="resourceModel" xsi:type="string">Experius\Dblogger\Model\ResourceModel\Log\Collection</argument>
-		</arguments>
-	</virtualType>
-	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-		<arguments>
-			<argument name="collections" xsi:type="array">
-				<item name="experius_dblogger_grid_data_source" xsi:type="string">Experius\Dblogger\Model\ResourceModel\Log\Grid\Collection</item>
-			</argument>
-		</arguments>
-	</type>
-	<preference for="Experius\Dblogger\Api\LogRepositoryInterface" type="Experius\Dblogger\Model\LogRepository"/>
-	<preference for="Experius\Dblogger\Api\Data\LogInterface" type="Experius\Dblogger\Model\Log"/>
-	<preference for="Experius\Dblogger\Api\Data\LogSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-	<type name="Magento\Framework\Console\CommandList">
-		<arguments>
-			<argument name="commands" xsi:type="array">
-				<item name="create" xsi:type="object">Experius\Dblogger\Console\Command\CreateLogsCommand</item>
-				<item name="clean" xsi:type="object">Experius\Dblogger\Console\Command\CleanLogsCommand</item>
-			</argument>
-		</arguments>
-	</type>
+    <virtualType name="Experius\Dblogger\Model\ResourceModel\Log\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">experius_dblogger</argument>
+            <argument name="resourceModel" xsi:type="string">Experius\Dblogger\Model\ResourceModel\Log\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="experius_dblogger_grid_data_source" xsi:type="string">Experius\Dblogger\Model\ResourceModel\Log\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Experius\Dblogger\Api\LogRepositoryInterface" type="Experius\Dblogger\Model\LogRepository"/>
+    <preference for="Experius\Dblogger\Api\Data\LogInterface" type="Experius\Dblogger\Model\Log"/>
+    <preference for="Experius\Dblogger\Api\Data\LogSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="create" xsi:type="object">Experius\Dblogger\Console\Command\CreateLogsCommand</item>
+                <item name="clean" xsi:type="object">Experius\Dblogger\Console\Command\CleanLogsCommand</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

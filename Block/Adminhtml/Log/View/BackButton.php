@@ -19,20 +19,37 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Experius\Dblogger\Api\Data;
+namespace Experius\Dblogger\Block\Adminhtml\Log\View;
 
-interface LogSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
+
+/**
+ * Class BackButton
+ * @package Experius\Dblogger\Block\Adminhtml\Log\View
+ */
+class BackButton extends GenericButton implements ButtonProviderInterface
 {
-    /**
-     * Get Log list.
-     * @return \Experius\Dblogger\Api\Data\LogInterface[]
-     */
-    public function getItems();
 
     /**
-     * Set module list.
-     * @param \Experius\Dblogger\Api\Data\LogInterface[] $items
-     * @return $this
+     * @return array
      */
-    public function setItems(array $items);
+    public function getButtonData()
+    {
+        return [
+            'label' => __('Back'),
+            'on_click' => sprintf("location.href = '%s';", $this->getBackUrl()),
+            'class' => 'back',
+            'sort_order' => 10
+        ];
+    }
+
+    /**
+     * Get URL for back (reset) button
+     *
+     * @return string
+     */
+    public function getBackUrl()
+    {
+        return $this->getUrl('*/*/');
+    }
 }

@@ -3,7 +3,8 @@
 	<update handle="styles"/>
 	<body>
 		<referenceContainer name="content">
-			<uiComponent name="experius_dblogger_index"/>
+			<uiComponent name="experius_dblogger_view"/>
 		</referenceContainer>
 	</body>
 </page>
+

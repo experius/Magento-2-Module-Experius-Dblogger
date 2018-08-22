@@ -1,12 +1,17 @@
-<?php 
+<?php
 
 namespace Experius\Dblogger\Ui\Component\Listing\Columns\Column;
 
+/**
+ * Class Type
+ * @package Experius\Dblogger\Ui\Component\Listing\Columns\Column
+ */
 class Type extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
     /**
-     * @param \Magento\Backend\Block\Context $context
+     * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
+     * @param \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory
+     * @param array $components
      * @param array $data
      */
     public function __construct(
@@ -17,8 +22,11 @@ class Type extends \Magento\Ui\Component\Listing\Columns\Column
     ) {
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
-	
-		
+
+    /**
+     * @param array $dataSource
+     * @return array
+     */
 	public function prepareDataSource(array $dataSource)
     {
 		if (isset($dataSource['data']['items'])) {
@@ -47,5 +55,4 @@ class Type extends \Magento\Ui\Component\Listing\Columns\Column
         return $dataSource;
     }
 
-} 
-	
+}
