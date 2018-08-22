@@ -14,6 +14,10 @@ Support to take over PSR Logger.
 
 ## Change log
 
+Version 1.1.0 - August 22, 2018 | Lewis Voncken & Casper Frericks
+
+- FEATURE: Updated the Log Grid View and added a Log View
+
 Version 1.0.3 - September 01, 2017 | Rene Schep
 
 - BUGFIX: Old logs are now actually removed by cron
