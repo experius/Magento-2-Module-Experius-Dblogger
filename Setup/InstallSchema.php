@@ -2,19 +2,19 @@
 /**
  * Database logger
  * Copyright (C) 2017  Experius
- * 
+ *
  * This file is part of Experius/Dblogger.
- * 
+ *
  * Experius/Dblogger is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -40,7 +40,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_experius_dblogger = $setup->getConnection()->newTable($setup->getTable('experius_dblogger'));
 
-        
+
         $table_experius_dblogger->addColumn(
             'log_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
@@ -48,9 +48,9 @@ class InstallSchema implements InstallSchemaInterface
             array('identity' => true,'nullable' => false,'primary' => true,'unsigned' => true,),
             'Entity ID'
         );
-        
 
-        
+
+
         $table_experius_dblogger->addColumn(
             'module',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -58,9 +58,9 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => False],
             'module'
         );
-        
 
-        
+
+
         $table_experius_dblogger->addColumn(
             'action',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -68,9 +68,9 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => False],
             'action'
         );
-        
 
-        
+
+
         $table_experius_dblogger->addColumn(
             'message',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -78,7 +78,7 @@ class InstallSchema implements InstallSchemaInterface
             [],
             'message'
         );
-		
+
 		$table_experius_dblogger->addColumn(
             'type',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -86,9 +86,17 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => false],
             'type'
         );
-        
 
-        
+        $table_experius_dblogger->addColumn(
+            'context',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            null,
+            ['nullable' => true],
+            'context'
+        );
+
+
+
         $table_experius_dblogger->addColumn(
             'created_at',
             \Magento\Framework\DB\Ddl\Table::TYPE_DATETIME,
@@ -96,7 +104,7 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => False],
             'created_at'
         );
-        
+
 
         $setup->getConnection()->createTable($table_experius_dblogger);
 
