@@ -84,7 +84,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getLogId()] = $model->getData();
             $this->dataPersistor->clear('experius_dblogger_log');
         }
-
         return $this->loadedData;
     }
 }

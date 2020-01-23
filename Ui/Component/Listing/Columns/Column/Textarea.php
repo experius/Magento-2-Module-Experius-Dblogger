@@ -6,7 +6,7 @@ namespace Experius\Dblogger\Ui\Component\Listing\Columns\Column;
  * Class Info
  * @package Experius\Dblogger\Ui\Component\Listing\Columns\Column
  */
-class Info extends \Magento\Ui\Component\Listing\Columns\Column
+class Textarea extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
     /**
@@ -34,7 +34,7 @@ class Info extends \Magento\Ui\Component\Listing\Columns\Column
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
                 if(!empty($item[$fieldName])){
-                    $item[$fieldName] = '<pre style="max-height: 200px; max-width: 500px; word-wrap:break-word;"><code>'.$item[$fieldName].'</code></pre>';
+                    $item[$fieldName] = '<pre style="max-height: 200px; max-width: 500px; word-wrap:break-word;"><code><textarea style="min-height: 100px; width: 100%; background-color: inherit; border:none;" disabled>'.$item[$fieldName].'</textarea></code></pre>';
                 }
             }
         }
