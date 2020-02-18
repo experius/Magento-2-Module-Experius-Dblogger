@@ -53,10 +53,15 @@ class Log
      * @var \Experius\Dblogger\Api\LogRepositoryInterface
      */
     protected $logRepository;
+
     /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
+     * @var \Magento\Framework\App\ResourceConnection
      */
-    protected $searchCriteriaBuilder;
+    protected $resourceConnection;
+    /**
+     * @var \Magento\Framework\DB\Adapter\AdapterInterface
+     */
+    protected $connection;
 
     /**
      * @param \Experius\Dblogger\Model\LogFactory $logFactory
@@ -65,7 +70,7 @@ class Log
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib
      * @param \Experius\Dblogger\Api\LogRepositoryInterface $logRepository
-     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param \Magento\Framework\DB\Adapter\AdapterInterface $resourceConnection
      */
     public function __construct(
         \Experius\Dblogger\Model\LogFactory $logFactory,
@@ -74,15 +79,19 @@ class Log
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib,
         \Experius\Dblogger\Api\LogRepositoryInterface $logRepository,
-        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
+        \Magento\Framework\App\ResourceConnection $resourceConnection
     ) {
         $this->logFactory = $logFactory;
         $this->dateTimeLib = $dateTimeLib;
         $this->scopeConfig = $scopeConfig;
         $this->logger = $logger;
-        $this->isEnabled = (boolean) $this->scopeConfig->getValue('dev/dblogger/is_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $this->isEnabled = (boolean) $this->scopeConfig->getValue(
+            'dev/dblogger/is_enabled',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
         $this->logRepository = $logRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->resourceConnection = $resourceConnection;
+        $this->connection = $this->resourceConnection->getConnection();
     }
 
     /**
@@ -112,10 +121,15 @@ class Log
     public function cleanLog($numberOfDays)
     {
         $cleanDate = $this->dateTimeLib->date('Y-m-d H:i:s', strtotime('-' . $numberOfDays . ' day'));
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('created_at', $cleanDate, 'lt')->create();
-        $searchResults = $this->logRepository->getList($searchCriteria);
-        foreach ($searchResults->getItems() as $log) {
-            $this->logRepository->deleteById($log['log_id']);
-        }
+        $deletedRecords = $this->connection->delete(
+            $this->connection->getTableName('experius_dblogger'),
+            "created_at < '{$cleanDate}'"
+        );
+        $this->log(
+            'Experius_DbLogger',
+            'Experius\Dblogger\Helper\Log::cleanLog',
+            "Deleted {$deletedRecords} records from before {$cleanDate}",
+            'Notice'
+        );
     }
 }
