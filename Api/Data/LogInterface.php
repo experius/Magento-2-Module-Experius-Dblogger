@@ -54,6 +54,11 @@ interface LogInterface
     const MESSAGE = 'message';
 
     /**
+     * @var context
+     */
+    const CONTEXT = 'context';
+
+    /**
      * Get log_id
      * @return string|null
      */
@@ -117,6 +122,19 @@ interface LogInterface
      * @return Experius\Dblogger\Api\Data\LogInterface
      */
     public function setType($type);
+
+    /**
+     * Get context
+     * @return string|null
+     */
+    public function getContext();
+
+    /**
+     * Set context
+     * @param string $context
+     * @return Experius\Dblogger\Api\Data\LogInterface
+     */
+    public function setContext($context);
 
     /**
      * Get created_at

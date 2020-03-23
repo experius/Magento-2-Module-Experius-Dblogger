@@ -99,8 +99,9 @@ class Log
      * @param string $action
      * @param string $message
      * @param string $type
+     * @param string $context
      */
-    public function log(string $module, string $action, string $message, string $type)
+    public function log(string $module, string $action, string $message, string $type, string $context = '')
     {
         if ($this->isEnabled) {
             $this->logFactory->create()
@@ -108,6 +109,7 @@ class Log
                 ->setAction($action)
                 ->setMessage($message)
                 ->setType(ucfirst(strtolower($type)))
+                ->setContext($context)
                 ->setCreatedAt($this->dateTimeLib->date())
                 ->save();
             return;

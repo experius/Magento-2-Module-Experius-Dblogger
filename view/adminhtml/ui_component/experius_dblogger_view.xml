@@ -103,5 +103,18 @@
                 </item>
             </argument>
         </field>
+        <field name="context">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Context</item>
+                    <item name="component" xsi:type="string">Experius_Dblogger/js/components/disable-on-option/textarea</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="dataScope" xsi:type="string">context</item>
+                    <item name="validation" xsi:type="array">
+                    </item>
+                </item>
+            </argument>
+        </field>
     </fieldset>
 </form>
