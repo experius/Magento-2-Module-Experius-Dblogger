@@ -36,7 +36,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         ModuleContextInterface $context
     ) {
         $setup->startSetup();
-        if (version_compare($context->getVersion(), "1.0.1", ">=")) {
+        if (version_compare($context->getVersion(), "1.0.1", "<")) {
             $setup->getConnection()->addColumn(
                 $setup->getTable('experius_dblogger'),
                 'context',

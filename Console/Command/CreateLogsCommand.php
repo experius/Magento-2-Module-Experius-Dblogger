@@ -30,13 +30,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateLogsCommand extends Command
 {
-	protected $loghelper;
+    protected $logHelper;
 
- 	public function __construct( \Experius\Dblogger\Helper\Log $logHelper)
-	{
-		$this->logHelper = $logHelper;
-		parent::__construct();
-	}
+    public function __construct(
+        \Experius\Dblogger\Helper\Log $logHelper
+    ) {
+        $this->logHelper = $logHelper;
+        parent::__construct();
+    }
 
     protected function configure()
     {
@@ -45,28 +46,42 @@ class CreateLogsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-    	$this->first();
-		$this->second();
-		$this->third();
-		$this->fourth();
-		$this->fifth();
+        $this->first();
+        $this->second();
+        $this->third();
+        $this->fourth();
+        $this->fifth();
+        $this->noContext();
         $output->writeln('Created Logs');
     }
 
-	protected function first(){
-		$this->logHelper->log('Experius_Dblogger', 'first', 'Test melding', 'success', 'context');
-	}
-	protected function second(){
-		$this->logHelper->log('Experius_Dblogger', 'second', 'Test melding', 'error', 'context');
-	}
-	protected function third(){
-		$this->logHelper->log('Experius_Dblogger', 'third', 'Test melding', 'notice', 'context');
-	}
-	protected function fourth(){
-		$this->logHelper->log('Experius_Dblogger', 'fourth', 'Test melding', 'warning', 'context');
-	}
-	protected function fifth(){
-		$this->logHelper->log('Experius_Dblogger', 'fifth', 'Test melding', 'exception', 'context');
-	}
+    protected function first()
+    {
+        $this->logHelper->log('Experius_Dblogger', 'first', 'Test melding', 'success', 'context');
+    }
 
+    protected function second()
+    {
+        $this->logHelper->log('Experius_Dblogger', 'second', 'Test melding', 'error', 'context');
+    }
+
+    protected function third()
+    {
+        $this->logHelper->log('Experius_Dblogger', 'third', 'Test melding', 'notice', 'context');
+    }
+
+    protected function fourth()
+    {
+        $this->logHelper->log('Experius_Dblogger', 'fourth', 'Test melding', 'warning', 'context');
+    }
+
+    protected function fifth()
+    {
+        $this->logHelper->log('Experius_Dblogger', 'fifth', 'Test melding', 'exception', 'context');
+    }
+
+    protected function noContext()
+    {
+        $this->logHelper->log('Experius_Dblogger', 'no context', 'Test melding', 'exception');
+    }
 }

@@ -28,13 +28,13 @@ class Textarea extends \Magento\Ui\Component\Listing\Columns\Column
      * @param array $dataSource
      * @return array
      */
-	public function prepareDataSource(array $dataSource)
+    public function prepareDataSource(array $dataSource)
     {
-		if (isset($dataSource['data']['items'])) {
+        if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
-                if(!empty($item[$fieldName])){
-                    $item[$fieldName] = '<pre style="max-height: 200px; max-width: 500px; word-wrap:break-word;"><code><textarea style="min-height: 100px; width: 100%; background-color: inherit; border:none;" disabled>'.$item[$fieldName].'</textarea></code></pre>';
+                if (!empty($item[$fieldName])) {
+                    $item[$fieldName] = '<pre style="max-height: 200px; max-width: 500px; word-wrap:break-word;"><code><textarea style="min-height: 100px; width: 100%; background-color: inherit; border:none;" disabled>' . $item[$fieldName] . '</textarea></code></pre>';
                 }
             }
         }

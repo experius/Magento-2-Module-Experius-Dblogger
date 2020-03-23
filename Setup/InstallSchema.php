@@ -45,30 +45,27 @@ class InstallSchema implements InstallSchemaInterface
             'log_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             null,
-            array('identity' => true,'nullable' => false,'primary' => true,'unsigned' => true,),
+            array('identity' => true, 'nullable' => false, 'primary' => true, 'unsigned' => true,),
             'Entity ID'
         );
-
 
 
         $table_experius_dblogger->addColumn(
             'module',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             null,
-            ['nullable' => False],
+            ['nullable' => false],
             'module'
         );
-
 
 
         $table_experius_dblogger->addColumn(
             'action',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             null,
-            ['nullable' => False],
+            ['nullable' => false],
             'action'
         );
-
 
 
         $table_experius_dblogger->addColumn(
@@ -79,7 +76,8 @@ class InstallSchema implements InstallSchemaInterface
             'message'
         );
 
-		$table_experius_dblogger->addColumn(
+
+        $table_experius_dblogger->addColumn(
             'type',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             null,
@@ -87,21 +85,12 @@ class InstallSchema implements InstallSchemaInterface
             'type'
         );
 
-        $table_experius_dblogger->addColumn(
-            'context',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
-            ['nullable' => true],
-            'context'
-        );
-
-
 
         $table_experius_dblogger->addColumn(
             'created_at',
             \Magento\Framework\DB\Ddl\Table::TYPE_DATETIME,
             null,
-            ['nullable' => False],
+            ['nullable' => false],
             'created_at'
         );
 
