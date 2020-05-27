@@ -42,7 +42,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 'context',
                 [
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                    'size' => null,
+                    'size' => '2M',
                     'nullable' => true,
                     'comment' => 'context'
                 ]
