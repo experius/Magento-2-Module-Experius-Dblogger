@@ -71,7 +71,7 @@ class InstallSchema implements InstallSchemaInterface
         $table_experius_dblogger->addColumn(
             'message',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
+            '2M',
             [],
             'message'
         );
