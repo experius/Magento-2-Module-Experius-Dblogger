@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="dev" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+        <section id="system">
             <resource>Experius_Dblogger::config_experius_dblogger</resource>
             <group id="dblogger" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="100" translate="label">
                 <label>Database Logger</label>

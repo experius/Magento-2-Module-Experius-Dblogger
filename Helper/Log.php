@@ -86,7 +86,7 @@ class Log
         $this->scopeConfig = $scopeConfig;
         $this->logger = $logger;
         $this->isEnabled = (boolean) $this->scopeConfig->getValue(
-            'dev/dblogger/is_enabled',
+            'system/dblogger/is_enabled',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
         $this->logRepository = $logRepository;

@@ -43,7 +43,7 @@ class Log
     ) {
         $this->logHelper = $logHelper;
 
-        $numberOfDays = $scopeConfig->getValue('dev/dblogger/days', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $numberOfDays = $scopeConfig->getValue('system/dblogger/days', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $numberOfDays = ($numberOfDays) ? $numberOfDays : 30;
         if(!is_numeric($numberOfDays)) {
             throw new \InvalidArgumentException('Dblogger constructor $numberOfDays function only accepts integers. Input was: '. $numberOfDays);
