@@ -1,3 +1,10 @@
+## 1.1.8 (2022-06-21)
+
+[View Release](git@github.com:experius/Magento-2-Module-Experius-Dblogger.git/commits/tag/1.1.8)
+
+*  [BUGFIX][SFTG-312] SuppressWarning for unused parameters in Magento 2 plugins. Keep DI variable intact ($timeZoneLib in __construct()) to avoid backwards incompatibility on possible overrides. *(Boris van Katwijk)*
+
+
 ## 1.1.7 (2021-01-22)
 
 [View Release](git@github.com:experius/Magento-2-Module-Experius-Dblogger.git/commits/tag/1.1.7)

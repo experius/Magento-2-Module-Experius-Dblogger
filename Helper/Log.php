@@ -71,6 +71,7 @@ class Log
      * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timeZoneLib
      * @param \Experius\Dblogger\Api\LogRepositoryInterface $logRepository
      * @param \Magento\Framework\DB\Adapter\AdapterInterface $resourceConnection
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function __construct(
         \Experius\Dblogger\Model\LogFactory $logFactory,

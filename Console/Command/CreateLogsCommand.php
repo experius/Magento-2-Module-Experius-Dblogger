@@ -44,6 +44,9 @@ class CreateLogsCommand extends Command
         $this->setName('experius:dblogger:create')->setDescription('Creates test logs.');
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->first();
