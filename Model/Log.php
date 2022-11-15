@@ -27,6 +27,13 @@ class Log extends \Magento\Framework\Model\AbstractModel implements LogInterface
 {
 
     /**
+     * Prefix of model events names
+     *
+     * @var string
+     */
+    protected $_eventPrefix = 'experius_dblogger_log';
+
+    /**
      * @return void
      */
     protected function _construct()

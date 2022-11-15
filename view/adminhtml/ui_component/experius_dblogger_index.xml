@@ -23,6 +23,11 @@
 				</item>
 			</argument>
 		</argument>
+        <settings>
+            <storageConfig>
+                <param name="cacheRequests" xsi:type="boolean">false</param>
+            </storageConfig>
+        </settings>
 	</dataSource>
 	<listingToolbar name="listing_top">
 		<argument name="data" xsi:type="array">
