@@ -53,6 +53,9 @@ class LogRepository implements LogRepositoryInterface
 
     protected $dataObjectProcessor;
 
+    protected $logFactory;
+    
+    protected $logCollectionFactory;
 
     /**
      * @param ResourceLog $resource
