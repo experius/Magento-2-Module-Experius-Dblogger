@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="experius_dblogger" resource="default" engine="innodb" comment="experius_dblogger">
+        <column xsi:type="int" name="log_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="text" name="module" nullable="false" comment="module"/>
+        <column xsi:type="text" name="action" nullable="false" comment="action"/>
+        <column xsi:type="mediumtext" name="message" nullable="true" comment="message"/>
+        <column xsi:type="text" name="type" nullable="false" comment="type"/>
+        <column xsi:type="datetime" name="created_at" on_update="false" nullable="false" comment="created_at"/>
+        <column xsi:type="mediumtext" name="context" nullable="true" comment="context"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+    </table>
+</schema>

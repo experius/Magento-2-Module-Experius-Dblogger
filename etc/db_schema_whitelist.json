@@ -1,0 +1,16 @@
+{
+    "experius_dblogger": {
+        "column": {
+            "log_id": true,
+            "module": true,
+            "action": true,
+            "message": true,
+            "type": true,
+            "created_at": true,
+            "context": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

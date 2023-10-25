@@ -1,3 +1,24 @@
+## 1.2.0 (2023-10-25)
+
+[View Release](git@github.com:experius/Magento-2-Module-Experius-Dblogger.git/commits/tag/1.2.0)
+
+*  [BUGFIX][IN23-251] InstallSchema and UpgradeSchema scripts are obsolete. Converted this to db_schema.xml. Remove empty UpgradeData and InstallData. *(Boris van Katwijk)*
+
+
+## 1.1.10 (2023-05-09)
+
+[View Release](git@github.com:experius/Magento-2-Module-Experius-Dblogger.git/commits/tag/1.1.10)
+
+*  Declared dynamic property to fix PHP8.2 error *(Experius)*
+
+
+## 1.1.9 (2022-11-15)
+
+[View Release](git@github.com:experius/Magento-2-Module-Experius-Dblogger.git/commits/tag/1.1.9)
+
+*  [FEATURE][DSORG-1134] Added event prefix for log model, added not storage configuration for admin log grid *(Derrick Heesbeen)*
+
+
 ## 1.1.8 (2022-06-21)
 
 [View Release](git@github.com:experius/Magento-2-Module-Experius-Dblogger.git/commits/tag/1.1.8)
