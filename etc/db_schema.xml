@@ -13,5 +13,8 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="log_id"/>
         </constraint>
+        <index referenceId="IDX_EXPERIUS_DBLOGGER_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
     </table>
 </schema>
