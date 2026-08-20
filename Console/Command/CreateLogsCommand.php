@@ -22,6 +22,8 @@
 
 namespace Experius\Dblogger\Console\Command;
 
+use Magento\Framework\Console\Cli;
+
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -47,8 +49,7 @@ class CreateLogsCommand extends Command
     /**
      * @inheritdoc
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $this->first();
         $this->second();
         $this->third();
@@ -56,6 +57,8 @@ class CreateLogsCommand extends Command
         $this->fifth();
         $this->noContext();
         $output->writeln('Created Logs');
+    
+        return Cli::RETURN_SUCCESS;
     }
 
     protected function first()

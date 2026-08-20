@@ -86,7 +86,7 @@ class Log
         $this->dateTimeLib = $dateTimeLib;
         $this->scopeConfig = $scopeConfig;
         $this->logger = $logger;
-        $this->isEnabled = (boolean) $this->scopeConfig->getValue(
+        $this->isEnabled = (bool) $this->scopeConfig->getValue(
             'system/dblogger/is_enabled',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
