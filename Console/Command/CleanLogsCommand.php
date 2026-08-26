@@ -22,6 +22,8 @@
 
 namespace Experius\Dblogger\Console\Command;
 
+use Magento\Framework\Console\Cli;
+
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -55,9 +57,10 @@ class CleanLogsCommand extends Command
      * {@inheritDoc}
      * @see \Symfony\Component\Console\Command\Command::execute()
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $this->cronLog->cleanLog();
         $output->writeln('Cleaned Logs');
+    
+        return Cli::RETURN_SUCCESS;
     }
 }
