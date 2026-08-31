@@ -4,7 +4,7 @@
         <system>
             <dblogger>
                 <is_enabled>1</is_enabled>
-                <days>30</days>
+                <days>10</days>
             </dblogger>
         </system>
     </default>
